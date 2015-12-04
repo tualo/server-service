@@ -9,20 +9,27 @@ app.use('/bower', express.static('bower_components'));
 app.use('/app', express.static('app'));
 
 app.all('/service/:methode/:type', function (req, res, next) {
-  var ps = spawn('service',[req.params.type,req.params.methode]);
-  var psdata = "";
-  var success=true;
-  var error=null;
-  ps.stdout.on('data',function(data){
-    psdata+=data.toString()+"\n";
-  });
-  ps.on('close', function (code, signal) {
-    res.json({success:success,data: psdata,error: error});
-  });
-  ps.on('error', function (err) {
-    success = false;
-    error=err;
-  });
+  if (
+    ( (req.params.methode==='start') || (req.params.methode==='stop') ) &&
+    ( (req.params.type==='erp-dispatcher') || (req.params.type==='ocrservice') || (req.params.type==='grab-service'))
+  ){
+    var ps = spawn('service',[req.params.type,req.params.methode]);
+    var psdata = "";
+    var success=true;
+    var error=null;
+    ps.stdout.on('data',function(data){
+      psdata+=data.toString()+"\n";
+    });
+    ps.on('close', function (code, signal) {
+      res.json({success:success,data: psdata,error: error});
+    });
+    ps.on('error', function (err) {
+      success = false;
+      error=err;
+    });
+  }else{
+    res.json({success:false,data: psdata,error: "not allowed"});
+  }
 });
 
 app.all('/services', function (req, res, next) {
