@@ -9,7 +9,6 @@ app.use('/bower', express.static('bower_components'));
 app.use('/app', express.static('app'));
 
 app.all('/service/:methode/:type', function (req, res, next) {
-  console.log('service',[req.params.type,req.params.methode]);
   var ps = spawn('service',[req.params.type,req.params.methode]);
   var psdata = "";
   var success=true;
@@ -23,7 +22,6 @@ app.all('/service/:methode/:type', function (req, res, next) {
   ps.on('error', function (err) {
     success = false;
     error=err;
-    //res.json({success:false,data: error});
   });
 });
 
