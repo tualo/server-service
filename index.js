@@ -75,4 +75,5 @@ app.all('/', function (req, res, next) {
   res.render('index', { title: 'OCR Machine' });
 });
 
-app.listen(3000);
+var port = process.env.SERVER_SERVICE_PORT||3000;
+app.listen(port);

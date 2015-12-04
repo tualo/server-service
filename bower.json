@@ -1,0 +1,24 @@
+{
+  "name": "server-screen",
+  "description": "monitoring service for ocr machines",
+  "main": "index.js",
+  "authors": [
+    "Thomas Hoffmann"
+  ],
+  "license": "MIT",
+  "moduleType": [
+    "node"
+  ],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "extjs": "~6.0.0-640"
+  }
+}

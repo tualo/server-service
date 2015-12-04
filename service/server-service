@@ -1,0 +1,48 @@
+#! /bin/sh
+### BEGIN INIT INFO
+# Provides: server-service
+# Required-Start: $remote_fs $syslog
+# Required-Stop: $remote_fs $syslog
+# Default-Start: 2 3 4 5
+# Default-Stop: 0 1 6
+# Short-Description: server-service
+# Description: This file starts and stops server service
+#
+### END INIT INFO
+
+export GRAB_PATH=/tmp/
+
+export SERVER_SERVICE=jondoe
+export SERVER_SERVICE_HOME=/home/tualo/server-service
+export SERVER_SERVICE_PID=/var/run/server-service.pid
+export SERVER_SERVICE_PORT=80
+
+case "$1" in
+ start)
+   start-stop-daemon --start --quiet --chuid $SERVER_SERVICE    \
+    --make-pidfile --pidfile $SERVER_SERVICE_PID --background       \
+    --startas /bin/bash -- -c "exec node $SERVER_SERVICE_HOME/index.js > /var/log/server-service.log 2>&1"
+   ;;
+ stop)
+   start-stop-daemon --stop --pidfile $SERVER_SERVICE_PID
+   ;;
+ restart)
+   start-stop-daemon --stop --pidfile $SERVER_SERVICE_PID
+   sleep 1
+   start-stop-daemon --start --quiet --chuid $SERVER_SERVICE    \
+    --make-pidfile --pidfile $SERVER_SERVICE_PID --background       \
+    --startas /bin/bash -- -c "exec node $SERVER_SERVICE_HOME/index.js > /var/log/server-service.log 2>&1"
+   ;;
+ *)
+   echo "Usage: server-service {start|stop|restart}" >&2
+   exit 3
+   ;;
+esac
+
+# HINTS
+# place this file in /etc/init.d
+#
+# make it executeable
+# > sudo chmod a+x server-service
+# register as init script
+# > sudo update-rc.d server-service defaults
