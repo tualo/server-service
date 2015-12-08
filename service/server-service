@@ -13,7 +13,7 @@
 export GRAB_PATH=/tmp/
 
 export SERVER_SERVICE=jondoe
-export SERVER_SERVICE_HOME=/home/tualo/server-service
+export SERVER_SERVICE_HOME=/usr/lib/node_modules/server-service
 export SERVER_SERVICE_PID=/var/run/server-service.pid
 export SERVER_SERVICE_PORT=80
 

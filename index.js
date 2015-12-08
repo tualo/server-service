@@ -3,6 +3,8 @@ var express = require('express');
 var glob = require('glob');
 var app = express();
 var spawn = require('child_process').spawn;
+var os = require("os"),
+    cpus = os.cpus();
 
 app.set('view engine', 'jade');
 app.use('/bower', express.static('bower_components'));
@@ -40,10 +42,27 @@ app.all('/services', function (req, res, next) {
   });
   ps.on('close', function (code, signal) {
     var o = {
-      camera: /grab/.test(psdata),
+      camera: /\sgrab\s/.test(psdata),
       ocrservice: /ocrservice/.test(psdata),
       erpdispatcher: /erp\-dispatcher/.test(psdata)
     }
+
+    o.cpus=[];
+    for(var i = 0, len = cpus.length; i < len; i++) {
+      o.cpus[i] = {
+      };
+
+      var cpu = cpus[i], total = 0;
+      for(type in cpu.times){
+        total += cpu.times[type];
+      }
+
+      for(type in cpu.times){
+        o.cpus[i][type] = Math.round(100 * cpu.times[type] / total);
+      }
+      //    console.log("\t", type, Math.round(100 * cpu.times[type] / total));
+    }
+
     res.json({success:true,data: o});
   });
 });
