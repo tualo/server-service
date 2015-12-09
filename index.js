@@ -48,7 +48,7 @@ app.all('/services', function (req, res, next) {
     var o = {
       camera: /\sgrab\s/.test(psdata),
       ocrservice: /ocrservice-bcocr/.test(psdata),
-      erpdispatcher: /erp\-dispatcher/.test(psdata)
+      erpdispatcher: /erp\-dispatcher\-service/.test(psdata)
     }
 
     o.cpus=[];
