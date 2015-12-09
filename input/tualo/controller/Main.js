@@ -1,6 +1,6 @@
 Ext.define('Tualo.controller.Main', {
   extend: 'Ext.app.ViewController',
-  alias: 'controller.board',
+  alias: 'controller.main',
 
   services: function(){
     Ext.Ajax.request({

@@ -1,6 +1,6 @@
 Ext.define('Tualo.views.Main', {
   extend: 'Ext.panel.Panel',
-  xtype: 'board',
+  xtype: 'main',
   requires: [
     'Tualo.views.OpenFiles',
     'Tualo.models.Main',
