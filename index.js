@@ -7,8 +7,8 @@ var os = require("os"),
     cpus = os.cpus();
 
 app.set('view engine', 'jade');
-app.use('/bower', express.static('bower_components'));
-app.use('/app', express.static('app'));
+app.use('/bower', express.static(__dirname+'/bower_components'));
+app.use('/app', express.static(__dirname+'/app'));
 
 app.all('/service/:methode/:type', function (req, res, next) {
   if (
@@ -100,7 +100,7 @@ app.all('/openfiles', function (req, res, next) {
   });
 });
 app.all('/', function (req, res, next) {
-  res.render('index', { title: 'OCR Machine' });
+  res.render(__dirname+'/views/index', { title: 'OCR Machine' });
 });
 
 var port = process.env.SERVER_SERVICE_PORT||3000;
