@@ -13,7 +13,11 @@ app.use('/app', express.static(__dirname+'/app'));
 app.all('/service/:methode/:type', function (req, res, next) {
   if (
     ( (req.params.methode==='start') || (req.params.methode==='stop') ) &&
-    ( (req.params.type==='erp-dispatcher') || (req.params.type==='ocrservice') || (req.params.type==='grab-service'))
+    (
+      (req.params.type==='erp-dispatcher') ||
+      (req.params.type==='ocrservice') ||
+      (req.params.type==='ocrserviceui') ||
+      (req.params.type==='grab-service'))
   ){
     var ps = spawn('service',[req.params.type,req.params.methode]);
     var psdata = "";
@@ -48,6 +52,7 @@ app.all('/services', function (req, res, next) {
     var o = {
       camera: /\sgrab\s/.test(psdata),
       ocrservice: /ocrservice-bcocr/.test(psdata),
+      ocrserviceui: /ocrservice-io/.test(psdata),
       erpdispatcher: /erp\-dispatcher\-service/.test(psdata)
     }
 

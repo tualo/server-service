@@ -4,6 +4,7 @@ Ext.define('Tualo.models.Board', {
   data:{
     erpdispatcher: false,
     ocrservice: false,
+    ocrserviceui: false,
     camera: false,
     offline: true
   }

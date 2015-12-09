@@ -49,6 +49,15 @@ Ext.define('Tualo.views.Board', {
             },
             {
               xtype: 'checkbox',
+              fieldLabel: 'UI-Service',
+              name: 'ocrserviceui',
+              bind: '{ocrserviceui}',
+              listeners: {
+                change: 'onChangeService'
+              }
+            },
+            {
+              xtype: 'checkbox',
               fieldLabel: 'ERP-Dispatcher',
               name: 'erp-dispatcher',
               bind: '{erpdispatcher}',

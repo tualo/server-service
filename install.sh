@@ -46,7 +46,7 @@ apt-get install --force-yes \
   tesseract-ocr-deu \
   tesseract-ocr-osd \
   zbar-tools \
-  exact-image \
+  exactimage \
   mariadb
 
 
