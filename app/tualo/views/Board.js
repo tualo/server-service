@@ -41,8 +41,8 @@ Ext.define('Tualo.views.Board', {
             {
               xtype: 'checkbox',
               fieldLabel: 'OCR-Service',
-              name: 'ocrservice-bcocr',
-              bind: '{ocrservicebcocr}',
+              name: 'ocrservice',
+              bind: '{ocrservice}',
               listeners: {
                 change: 'onChangeService'
               }
