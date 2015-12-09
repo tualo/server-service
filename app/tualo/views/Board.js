@@ -41,8 +41,8 @@ Ext.define('Tualo.views.Board', {
             {
               xtype: 'checkbox',
               fieldLabel: 'OCR-Service',
-              name: 'ocrservice',
-              bind: '{ocrservice}',
+              name: 'ocrservice-bcocr',
+              bind: '{ocrservicebcocr}',
               listeners: {
                 change: 'onChangeService'
               }
@@ -50,8 +50,8 @@ Ext.define('Tualo.views.Board', {
             {
               xtype: 'checkbox',
               fieldLabel: 'UI-Service',
-              name: 'ocrserviceui',
-              bind: '{ocrserviceui}',
+              name: 'ocrservice-io',
+              bind: '{ocrserviceio}',
               listeners: {
                 change: 'onChangeService'
               }

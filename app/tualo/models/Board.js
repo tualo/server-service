@@ -3,8 +3,8 @@ Ext.define('Tualo.models.Board', {
   alias: 'viewmodel.board',
   data:{
     erpdispatcher: false,
-    ocrservice: false,
-    ocrserviceui: false,
+    ocrservicebcocr: false,
+    ocrserviceio: false,
     camera: false,
     offline: true
   }

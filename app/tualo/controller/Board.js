@@ -34,8 +34,8 @@ Ext.define('Tualo.controller.Board', {
           if (o.success){
             this.suppressChange = true;
             this.view.viewModel.set('camera',o.data.camera);
-            this.view.viewModel.set('ocrservice',o.data.ocrservice);
-            this.view.viewModel.set('ocrserviceui',o.data.ocrserviceui);
+            this.view.viewModel.set('ocrservicebcocr',o.data.ocrservicebcocr);
+            this.view.viewModel.set('ocrserviceio',o.data.ocrserviceio);
             this.view.viewModel.set('erpdispatcher',o.data.erpdispatcher);
             this.suppressChange = false;
           }

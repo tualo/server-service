@@ -15,8 +15,8 @@ app.all('/service/:methode/:type', function (req, res, next) {
     ( (req.params.methode==='start') || (req.params.methode==='stop') ) &&
     (
       (req.params.type==='erp-dispatcher') ||
-      (req.params.type==='ocrservice') ||
-      (req.params.type==='ocrserviceui') ||
+      (req.params.type==='ocrservice-bcocr') ||
+      (req.params.type==='ocrservice-io') ||
       (req.params.type==='grab-service'))
   ){
     var ps = spawn('service',[req.params.type,req.params.methode]);
@@ -51,8 +51,8 @@ app.all('/services', function (req, res, next) {
   ps.on('close', function (code, signal) {
     var o = {
       camera: /\sgrab\s/.test(psdata),
-      ocrservice: /ocrservice-bcocr/.test(psdata),
-      ocrserviceui: /ocrservice-io/.test(psdata),
+      ocrservicebcocr: /ocrservice\-bcocr/.test(psdata),
+      ocrserviceio: /ocrservice\-io/.test(psdata),
       erpdispatcher: /erp\-dispatcher\-service/.test(psdata)
     }
 
