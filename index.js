@@ -23,7 +23,11 @@ app.all('/service/:methode/:type', function (req, res, next) {
       psdata+=data.toString()+"\n";
     });
     ps.on('close', function (code, signal) {
-      res.json({success:success,data: psdata,error: error});
+
+      setTimeout(function(){
+        res.json({success:success,data: psdata,error: error});
+      },3000);
+
     });
     ps.on('error', function (err) {
       success = false;
