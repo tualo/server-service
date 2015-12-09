@@ -9,6 +9,7 @@ var os = require("os"),
 app.set('view engine', 'jade');
 app.use('/bower', express.static(__dirname+'/bower_components'));
 app.use('/app', express.static(__dirname+'/app'));
+app.use('/input', express.static(__dirname+'/input'));
 
 app.all('/service/:methode/:type', function (req, res, next) {
   if (
