@@ -104,8 +104,32 @@ app.all('/openfiles', function (req, res, next) {
     }
   });
 });
+
+app.all('/noaddressfiles', function (req, res, next) {
+  var path = process.env.NO_ADDRESS_PATH || "/imagedata/noaddress";
+  glob('*.tiff',{cwd: path },function(er,files){
+    if (er){
+      res.json({success:false,error: er});
+    }else{
+      var list = [];
+      for(var i=0; i<files.length;i++){
+        list.push({
+          id: files[i]
+        });
+      }
+      res.json({success:true,total: files.length,data:list});
+    }
+  });
+});
+
+
 app.all('/', function (req, res, next) {
   res.render(__dirname+'/views/index', { title: 'OCR Machine' });
+});
+
+
+app.all('/input', function (req, res, next) {
+  res.render(__dirname+'/views/input', { title: 'Erfassung' });
 });
 
 var port = process.env.SERVER_SERVICE_PORT||3000;
