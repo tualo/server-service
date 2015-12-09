@@ -1,5 +1,7 @@
 #! /bin/sh
+
 ### BEGIN INIT INFO
+#
 # Provides: server-service
 # Required-Start: $remote_fs $syslog
 # Required-Stop: $remote_fs $syslog
@@ -9,6 +11,7 @@
 # Description: This file starts and stops server service
 #
 ### END INIT INFO
+
 
 export GRAB_PATH=/tmp/
 
